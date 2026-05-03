@@ -20,3 +20,25 @@ weather = data['weather'][0]['main']
 from datetime import datetime
 time = datetime.fromtimestamp(data['dt'])
 
+# Database connection and insertion
+import mysql.connector
+conn = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="Rohit@89ji0",
+    database="weather_db"
+)
+
+cursor = conn.cursor()
+
+query = """
+INSERT INTO weather_data (city, temperature, humidity, weather, timestamp)
+VALUES (%s, %s, %s, %s, %s)
+"""
+
+values = (city, temp, humidity, weather, time)
+
+cursor.execute(query, values)
+conn.commit()
+
+print("Data inserted successfully ✅")
