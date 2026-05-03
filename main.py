@@ -42,3 +42,5 @@ cursor.execute(query, values)
 conn.commit()
 
 print("Data inserted successfully ✅")
+
+# Auto Refresh with task scheduler in 1 minute setup done.
