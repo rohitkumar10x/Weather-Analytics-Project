@@ -16,4 +16,7 @@ humidity = data['main']['humidity']
 weather = data['weather'][0]['main']
 
 
+# Timestamp conveert into human-readable format
+from datetime import datetime
+time = datetime.fromtimestamp(data['dt'])
 
