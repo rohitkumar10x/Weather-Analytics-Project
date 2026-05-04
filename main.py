@@ -17,7 +17,9 @@ while True:
         temp = data['main']['temp']
         humidity = data['main']['humidity']
         weather = data['weather'][0]['main']
-        time_now = datetime.fromtimestamp(data['dt'])
+        
+        # 🔥 CHANGE 1 → apna current time use karo (unique banega)
+        time_now = datetime.now()
 
         conn = mysql.connector.connect(
             host="localhost",
@@ -28,17 +30,25 @@ while True:
 
         cursor = conn.cursor()
 
-        query = """
-        INSERT INTO weather_data (city, temperature, humidity, weather, timestamp)
-        VALUES (%s, %s, %s, %s, %s)
-        """
+        # 🔥 CHANGE 2 → duplicate check
+        check_query = "SELECT COUNT(*) FROM weather_data WHERE timestamp = %s"
+        cursor.execute(check_query, (time_now,))
+        result = cursor.fetchone()[0]
 
-        values = (city_name, temp, humidity, weather, time_now)
+        if result == 0:
+            query = """
+            INSERT INTO weather_data (city, temperature, humidity, weather, timestamp)
+            VALUES (%s, %s, %s, %s, %s)
+            """
 
-        cursor.execute(query, values)
-        conn.commit()
+            values = (city_name, temp, humidity, weather, time_now)
 
-        print("Data inserted successfully ✅")
+            cursor.execute(query, values)
+            conn.commit()
+
+            print("Inserted ✅")
+        else:
+            print("Duplicate skipped ❌")
 
         cursor.close()
         conn.close()
@@ -46,4 +56,4 @@ while True:
     except Exception as e:
         print("Error:", e)
 
-    time.sleep(60)  # 60 sec = 1 minute
+    time.sleep(60)
