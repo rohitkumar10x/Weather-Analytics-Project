@@ -1,94 +1,52 @@
-# 🌦 Real-Time Weather Monitoring & Analysis System
+# 🌦️ Real-Time Weather Data Analytics Pipeline
 
-A real-time weather data pipeline project built using **Python**, **OpenWeather API**, **MySQL**, and **Power BI**.  
-This project collects live weather data at regular intervals, stores it in a MySQL database, and visualizes insights through an interactive Power BI dashboard.
+![GitHub License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Python](https://img.shields.io/badge/Python-3.9+-yellow?logo=python)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange?logo=mysql)
+![Power BI](https://img.shields.io/badge/Power%20BI-Analytics-yellow?logo=powerbi)
+![Status](https://img.shields.io/badge/Pipeline-100%25%20Automated-brightgreen)
 
----
-
-# 🚀 Project Overview
-
-This project demonstrates an end-to-end data workflow:
-
-1. Fetch live weather data using API
-2. Store data into MySQL database
-3. Perform data transformation
-4. Create analytical dashboard in Power BI
-5. Analyze weather trends and patterns
+An automated, end-to-end data analytics project that ingests real-time weather data from OpenWeather API, stores it in a MySQL database, and visualizes live trends in Power BI.
 
 ---
 
-# 🛠 Technologies Used
+## 📊 Live Dashboard Preview
+Designed to provide real-time insights with an on-click refresh mechanism.
 
-- Python
-- MySQL
-- Power BI
-- OpenWeather API
-- Task Scheduler
-- Power Query
+<p align="center">
+  <img src="https://github.com/rohitkumar10x/Weather-Analytics-Project/blob/main/Weather%20Analytics%20Dashbaord.jpg?raw=true" alt="Weather Dashboard" width="900">
+</p>
 
 ---
 
-# 📂 Project Workflow
+## 🚀 Project Overview
+This project demonstrates the complete **ETL (Extract, Transform, Load)** cycle. It fetches live weather parameters (Temperature, Humidity, Conditions) for Noida via API, cleans the data, and maintains a historical record for trend analysis.
 
-## 1️⃣ Data Collection
-Weather data is fetched using the OpenWeather API through a Python script.
-
-Collected fields:
-- City
-- Temperature
-- Humidity
-- Weather Condition
-- Timestamp
+### 🔹 Key Features
+* **Live Data Ingestion:** Automated fetching using OpenWeatherMap API.
+* **Database Automation:** Python script manages live data insertion into MySQL.
+* **Scheduled Tasks:** Fully automated data pipeline using Windows Task Scheduler.
+* **Advanced Analytics:** Dynamic Power BI visuals with DAX for Today/Yesterday/Historical comparisons.
+* **Version Control:** Managed and tracked using Git and GitHub.
 
 ---
 
-## 2️⃣ Database Storage
-The fetched data is automatically stored inside a MySQL database table for further analysis.
+## 🛠️ Tech Stack & Tools
+* **Language:** Python (main.py)
+* **Database:** MySQL (queries.sql)
+* **Visualization:** Power BI (Weather Analytics Dashbaord.pbix)
+* **API:** OpenWeather API
+* **Automation:** Windows Task Scheduler
+* **Version Control:** Git & GitHub
 
 ---
 
-## 3️⃣ Automation
-Windows Task Scheduler is used to run the Python script automatically at fixed intervals.
-
----
-
-## 4️⃣ Data Transformation
-Using Power Query:
-- Timestamp split into Date and Time
-- Hour extracted for hourly analysis
-- Data cleaned and formatted
-
----
-
-## 5️⃣ Dashboard & Analysis
-Interactive Power BI dashboard created for:
-- Temperature trend analysis
-- Humidity monitoring
-- Hourly weather analysis
-- Weather condition distribution
-- KPI monitoring
-
----
-
-# 📊 Dashboard Insights
-
-The dashboard provides:
-- Average Temperature
-- Maximum & Minimum Temperature
-- Average Humidity
-- Hourly Temperature Trends
-- Weather Type Frequency
-- Time-based Weather Analysis
-
----
-
-# 📁 Project Structure
-
+## 📂 Project Structure
+As shown in the repository:
 ```bash
-weather-project/
-│
-├── weather_api.py
-├── database.sql
-├── powerbi_dashboard.pbix
-├── README.md
-└── screenshots/
+├── .gitattributes
+├── main.py                          # Python script for API ingestion & automation
+├── queries.sql                      # Database schema & analytical SQL queries
+├── README.md                        # Documentation
+├── Weather Analytics Dashbaord.jpg  # Dashboard preview image
+└── Weather Analytics Dashbaord.pbix # Power BI project file
