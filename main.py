@@ -18,19 +18,19 @@ while True:
         humidity = data['main']['humidity']
         weather = data['weather'][0]['main']
         
-        # 🔥 CHANGE 1 → apna current time use karo (unique banega)
+        # Connect to MySQL and insert data
         time_now = datetime.now()
 
         conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Rohit@89ji0",
+            password="1234",
             database="weather_db"
         )
 
-        cursor = conn.cursor()
+        cursor = conn.cursor() # Create a cursor object to execute SQL queries
 
-        # 🔥 CHANGE 2 → duplicate check
+        # Check for duplicate entry based on timestamp
         check_query = "SELECT COUNT(*) FROM weather_data WHERE timestamp = %s"
         cursor.execute(check_query, (time_now,))
         result = cursor.fetchone()[0]
